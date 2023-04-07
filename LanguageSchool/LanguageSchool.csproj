@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\school_logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -181,6 +184,8 @@
       <DependentUpon>LanguageSchoolModel.edmx</DependentUpon>
       <LastGenOutput>LanguageSchoolModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\school_logo.ico" />
+    <Resource Include="Images\school_logo.png" />
     <Resource Include="Услуги школы\for company.jpg" />
     <Resource Include="Услуги школы\online lessons.jpg" />
     <Resource Include="Услуги школы\Английский язык.jpg" />
@@ -202,8 +207,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
