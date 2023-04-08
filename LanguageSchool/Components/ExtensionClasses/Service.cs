@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace LanguageSchool.Components
 {
@@ -15,5 +16,6 @@ namespace LanguageSchool.Components
         public string DiscountDisplay => Discount == null || Discount == 0 ? "" : $"* скидка {Discount}%";
         public string ImagePath => $@"/{MainImagePath}";
         public Visibility AdminVisibility => App.IsAdminMode ? Visibility.Visible : Visibility.Collapsed;
+        public Brush ServiceBackgroundColor => Discount > 0 ? Brushes.LightGreen : Brushes.Transparent;
     }
 }

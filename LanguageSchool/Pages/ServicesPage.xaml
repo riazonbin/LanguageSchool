@@ -10,9 +10,9 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="102*"/>
+            <RowDefinition Height="313*"/>
+            <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -20,11 +20,26 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="Языковая школа" FontSize="24" Margin="0 0 10 0"></TextBlock>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
+            <TextBlock Text="Школа языков Леарн" FontSize="24" Margin="0 0 10 0"></TextBlock>
             <Image Source="\Images\school_logo.png" Width="50"  VerticalAlignment="Top"></Image>
         </StackPanel>
-        
+
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <TextBlock Text="Поиск:"></TextBlock>
+            <TextBox Margin="10 0 0 0" x:Name="tbSearchName" Width="100" TextChanged="tbSearchNameTextChanged"></TextBox>
+
+            <TextBlock Margin="10 0 0 0" Text="Сортировка"></TextBlock>
+            <ComboBox Margin="10 0 0 0" x:Name="cbSortPrice" Width="120" SelectionChanged="cbSortPriceSelectionChanged" SelectedIndex="0">
+                <ComboBoxItem Name="noPriceSort" Content="Нет сортировки"></ComboBoxItem>
+                <ComboBoxItem Name="loweringPriceSort" Content="По убыванию"></ComboBoxItem>
+                <ComboBoxItem Name="upperingPriceSort" Content="По возрастанию"></ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock Margin="10 0 0 0" Text="Фильтрация по скидке"></TextBlock>
+            <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" Width="100"></ComboBox>
+        </StackPanel>
+
         <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -34,7 +49,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0" Source="{Binding Path=ImagePath}" Width="200" Height="200" Margin="0 0 10 8"/>
-                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top">
+                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top" Background="{Binding Path=ServiceBackgroundColor}">
                             <TextBlock Text="{Binding Path=Title}"></TextBlock>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
