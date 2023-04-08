@@ -12,6 +12,11 @@
 
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF04A0FF"></Setter>
         </Style>
     </Application.Resources>
 </Application>

@@ -20,36 +20,44 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Row="0" Grid.Column="1" Background="#FFE7FABF"></StackPanel>
+
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
             <TextBlock Text="Школа языков Леарн" FontSize="24" Margin="0 0 10 0"></TextBlock>
             <Image Source="\Images\school_logo.png" Width="50"  VerticalAlignment="Top"></Image>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
             <TextBlock Text="Поиск:"></TextBlock>
             <TextBox Margin="10 0 0 0" x:Name="tbSearchName" Width="100" TextChanged="tbSearchNameTextChanged"></TextBox>
 
             <TextBlock Margin="10 0 0 0" Text="Сортировка"></TextBlock>
-            <ComboBox Margin="10 0 0 0" x:Name="cbSortPrice" Width="120" SelectionChanged="cbSortPriceSelectionChanged" SelectedIndex="0">
-                <ComboBoxItem Name="noPriceSort" Content="Нет сортировки"></ComboBoxItem>
-                <ComboBoxItem Name="loweringPriceSort" Content="По убыванию"></ComboBoxItem>
-                <ComboBoxItem Name="upperingPriceSort" Content="По возрастанию"></ComboBoxItem>
+            <ComboBox Margin="10 0 0 0" x:Name="cbSortPrice" SelectionChanged="cbSortPriceSelectionChanged" SelectedIndex="0">
+                <ComboBoxItem Content="Нет сортировки"></ComboBoxItem>
+                <ComboBoxItem Content="По убыванию"></ComboBoxItem>
+                <ComboBoxItem Content="По возрастанию"></ComboBoxItem>
             </ComboBox>
 
             <TextBlock Margin="10 0 0 0" Text="Фильтрация по скидке"></TextBlock>
-            <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" Width="100"></ComboBox>
+            <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" SelectedIndex="0">
+                <ComboBoxItem Content="от 0 до 5%"></ComboBoxItem>
+                <ComboBoxItem Content="от 5 до 15%"></ComboBoxItem>
+                <ComboBoxItem Content="от 15 до 30%"></ComboBoxItem>
+                <ComboBoxItem Content="от 30 до 70%"></ComboBoxItem>
+                <ComboBoxItem Content="от 70 до 100%"></ComboBoxItem>
+            </ComboBox>
         </StackPanel>
 
-        <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="{Binding Path=ServiceBackgroundColor}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0" Source="{Binding Path=ImagePath}" Width="200" Height="200" Margin="0 0 10 8"/>
-                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top" Background="{Binding Path=ServiceBackgroundColor}">
+                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top">
                             <TextBlock Text="{Binding Path=Title}"></TextBlock>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace LanguageSchool
 {
@@ -19,5 +20,7 @@ namespace LanguageSchool
         public static bool IsAdminMode = false;
 
         public static Visibility IsAdminModeVisible = IsAdminMode ? Visibility.Visible : Visibility.Hidden;
+
+        public static Brush AdditionalBackground = new SolidColorBrush(Color.FromRgb(231, 250, 191));
     }
 }
