@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageSchool"
         mc:Ignorable="d"
-        Title="Языковая школа" Height="450" Width="800">
+        Title="Языковая школа" Height="550" Width="900">
     <Grid>
         <Frame x:Name="MainFrame"></Frame>
     </Grid>

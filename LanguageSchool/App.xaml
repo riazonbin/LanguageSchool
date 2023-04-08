@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:LanguageSchool"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="ListViewItem">
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
