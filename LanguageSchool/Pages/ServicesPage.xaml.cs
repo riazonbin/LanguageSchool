@@ -21,9 +21,7 @@ namespace LanguageSchool.Pages
     /// </summary>
     public partial class ServicesPage : Page
     {
-        public List<Service> AllServices { get; set; }
-
-        public List<Service> ModifiedServices { get; set; }
+        public List<Service> SourceData { get; set; }
 
         private Predicate<Service> _filterQuery = x => true;
 
@@ -33,10 +31,11 @@ namespace LanguageSchool.Pages
         {
             InitializeComponent();
 
-            AllServices = App.Connection.Service.ToList();
-            ModifiedServices = AllServices;
+            SourceData = App.Connection.Service.ToList();
 
-            lvServices.ItemsSource = AllServices;
+            lvServices.ItemsSource = SourceData;
+
+            EditDataCount();
         }
 
         private void tbSearchNameTextChanged(object sender, TextChangedEventArgs e)
@@ -56,7 +55,9 @@ namespace LanguageSchool.Pages
                 App.IsAdminMode = true;
             }
 
-            lvServices.ItemsSource = ModifiedServices.Where(x => x.Title.ToLower().Contains(tbSearchName.Text.ToLower())).ToList();
+            lvServices.ItemsSource = SourceData.Where(x => x.Title.ToLower().Contains(tbSearchName.Text.ToLower())).ToList();
+
+            EditDataCount();
         }
 
         private void UpdateData()
@@ -66,7 +67,7 @@ namespace LanguageSchool.Pages
                 return;
             }
 
-           ModifiedServices = AllServices 
+           SourceData = App.Connection.Service.ToList()
                 .Where(
                 x => _filterQuery(x))
                 .OrderBy(x => _sortQuery(x))
@@ -151,6 +152,11 @@ namespace LanguageSchool.Pages
         private void cbFilterDiscountSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FiltrateDiscount();
+        }
+
+        private void EditDataCount()
+        {
+            tbDataCount.Text = $"{lvServices.Items.Count} из {App.Connection.Service.ToList().Count}";
         }
     }
 }

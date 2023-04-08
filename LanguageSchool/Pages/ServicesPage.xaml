@@ -22,6 +22,10 @@
 
         <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Background="#FFE7FABF"></StackPanel>
 
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <Button Content="Режим админа"></Button>
+        </StackPanel>
+
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
             <TextBlock Text="Школа языков Леарн" FontSize="24" Margin="0 0 10 0"></TextBlock>
             <Image Source="\Images\school_logo.png" Width="50"  VerticalAlignment="Top"></Image>
@@ -84,5 +88,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <TextBlock x:Name="tbDataCount"></TextBlock>
+        </StackPanel>
     </Grid>
 </Page>
