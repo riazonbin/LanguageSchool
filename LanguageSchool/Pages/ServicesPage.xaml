@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Background="#FFE7FABF"></StackPanel>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Background="#FFE7FABF"></StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
             <TextBlock Text="Школа языков Леарн" FontSize="24" Margin="0 0 10 0"></TextBlock>
@@ -39,7 +39,8 @@
             </ComboBox>
 
             <TextBlock Margin="10 0 0 0" Text="Фильтрация по скидке"></TextBlock>
-            <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" SelectedIndex="0">
+            <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" SelectedIndex="0" SelectionChanged="cbFilterDiscountSelectionChanged">
+                <ComboBoxItem Content="Без фильтрации по скидке"></ComboBoxItem>
                 <ComboBoxItem Content="от 0 до 5%"></ComboBoxItem>
                 <ComboBoxItem Content="от 5 до 15%"></ComboBoxItem>
                 <ComboBoxItem Content="от 15 до 30%"></ComboBoxItem>
@@ -61,7 +62,7 @@
                             <TextBlock Text="{Binding Path=Title}"></TextBlock>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="0 0 5 0" TextDecorations="Strikethrough" Text="{Binding Path=Cost}" Visibility="{Binding Path=IsHaveDiscount}"></TextBlock>
+                                    <TextBlock Margin="0 0 5 0" TextDecorations="Strikethrough" Text="{Binding Path=Cost, StringFormat={}{0:F0}}" Visibility="{Binding Path=IsHaveDiscount}"></TextBlock>
                                     <TextBlock>
                                         <TextBlock.Text>
                                             <MultiBinding StringFormat="{}{0:F0} рублей за {1}">
