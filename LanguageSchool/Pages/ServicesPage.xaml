@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -20,6 +20,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Языковая школа" FontSize="24" Margin="0 0 10 0"></TextBlock>
+            <Image Source="\Images\school_logo.png" Width="50"  VerticalAlignment="Top"></Image>
+        </StackPanel>
+        
         <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.ItemTemplate>
                 <DataTemplate>
