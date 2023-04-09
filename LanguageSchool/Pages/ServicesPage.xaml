@@ -5,52 +5,54 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LanguageSchool.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      WindowTitle="Услуги" Background="White">
+      d:DesignHeight="600" d:DesignWidth="1050"
+      WindowTitle="Услуги" Background="White" Loaded="ServicesPageLoaded">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="102*"/>
-            <RowDefinition Height="313*"/>
-            <RowDefinition Height="35*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="12*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Background="#FFE7FABF"></StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="2">
-            <Button Content="Режим админа"></Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
+        <StackPanel Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Text="Школа языков Леарн" FontSize="24" Margin="0 0 10 0"></TextBlock>
-            <Image Source="\Images\school_logo.png" Width="50"  VerticalAlignment="Top"></Image>
+            <Image Source="\Images\school_logo.png" Width="45"  VerticalAlignment="Top"></Image>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBlock Text="Поиск:"></TextBlock>
-            <TextBox Margin="10 0 0 0" x:Name="tbSearchName" Width="100" TextChanged="tbSearchNameTextChanged"></TextBox>
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom">
 
-            <TextBlock Margin="10 0 0 0" Text="Сортировка"></TextBlock>
-            <ComboBox Margin="10 0 0 0" x:Name="cbSortPrice" SelectionChanged="cbSortPriceSelectionChanged" SelectedIndex="0">
-                <ComboBoxItem Content="Нет сортировки"></ComboBoxItem>
-                <ComboBoxItem Content="По убыванию"></ComboBoxItem>
-                <ComboBoxItem Content="По возрастанию"></ComboBoxItem>
-            </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Поиск:"></TextBlock>
+                <TextBox Margin="10 0 0 0" x:Name="tbSearchName" Width="200" TextChanged="tbSearchNameTextChanged"></TextBox>
+                <Button x:Name="adminModeBtn" Margin="30 0 0 0" Content="Войти в админ режим" Click="adminModeBtnClick"/>
+            </StackPanel>
 
-            <TextBlock Margin="10 0 0 0" Text="Фильтрация по скидке"></TextBlock>
-            <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" SelectedIndex="0" SelectionChanged="cbFilterDiscountSelectionChanged">
-                <ComboBoxItem Content="Без фильтрации по скидке"></ComboBoxItem>
-                <ComboBoxItem Content="от 0 до 5%"></ComboBoxItem>
-                <ComboBoxItem Content="от 5 до 15%"></ComboBoxItem>
-                <ComboBoxItem Content="от 15 до 30%"></ComboBoxItem>
-                <ComboBoxItem Content="от 30 до 70%"></ComboBoxItem>
-                <ComboBoxItem Content="от 70 до 100%"></ComboBoxItem>
-            </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Сортировка"></TextBlock>
+                <ComboBox Margin="10 0 0 0" x:Name="cbSortPrice" SelectionChanged="cbSortPriceSelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="Нет сортировки"></ComboBoxItem>
+                    <ComboBoxItem Content="По убыванию"></ComboBoxItem>
+                    <ComboBoxItem Content="По возрастанию"></ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock Margin="10 0 0 0" Text="Фильтрация по скидке"></TextBlock>
+                <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" SelectedIndex="0" SelectionChanged="cbFilterDiscountSelectionChanged">
+                    <ComboBoxItem Content="Без фильтрации по скидке"></ComboBoxItem>
+                    <ComboBoxItem Content="от 0 до 5%"></ComboBoxItem>
+                    <ComboBoxItem Content="от 5 до 15%"></ComboBoxItem>
+                    <ComboBoxItem Content="от 15 до 30%"></ComboBoxItem>
+                    <ComboBoxItem Content="от 30 до 70%"></ComboBoxItem>
+                    <ComboBoxItem Content="от 70 до 100%"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
 
         <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch">
@@ -61,7 +63,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="{Binding Path=ImagePath}" Width="200" Height="200" Margin="0 0 10 8"/>
+                        <Image Grid.Column="0" Source="{Binding Path=ImagePath}" Width="150" Height="150" Margin="0 0 10 8"/>
                         <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top">
                             <TextBlock Text="{Binding Path=Title}"></TextBlock>
                             <StackPanel>
@@ -81,8 +83,8 @@
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 8">
-                            <Button Visibility="{Binding AdminVisibility}" Content="Редактировать" Margin="0 0 5 0"/>
-                            <Button Visibility="{Binding AdminVisibility}" Content="Удалить" Margin="5 0 0 0"/>
+                            <Button x:Name="btnEditService" Visibility="{Binding AdminVisibility}" Tag="{Binding ID}" Content="Редактировать" Margin="0 0 5 0" Click="btnEditServiceClick"/>
+                            <Button x:Name="btnDeleteService" Visibility="{Binding AdminVisibility}" Tag="{Binding ID}" Content="Удалить" Margin="5 0 0 0" Click="btnDeleteServiceClick"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -90,6 +92,7 @@
         </ListView>
 
         <StackPanel Grid.Column="1" Grid.Row="2">
+            <Button x:Name="btnAddNewService" Content="Добавить новую услугу" Click="btnAddNewServiceClick"/>
             <TextBlock x:Name="tbDataCount"></TextBlock>
         </StackPanel>
     </Grid>

@@ -30,12 +30,6 @@ namespace LanguageSchool.Pages
         public ServicesPage()
         {
             InitializeComponent();
-
-            SourceData = App.Connection.Service.ToList();
-
-            lvServices.ItemsSource = SourceData;
-
-            EditDataCount();
         }
 
         private void tbSearchNameTextChanged(object sender, TextChangedEventArgs e)
@@ -143,6 +137,7 @@ namespace LanguageSchool.Pages
                     break;
 
                 default:
+                    _filterQuery = x => true;
                     break;
             }
 
@@ -157,6 +152,51 @@ namespace LanguageSchool.Pages
         private void EditDataCount()
         {
             tbDataCount.Text = $"{lvServices.Items.Count} из {App.Connection.Service.ToList().Count}";
+        }
+
+        private void adminModeBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminModeEnterPage());
+        }
+
+        private void ServicesPageLoaded(object sender, RoutedEventArgs e)
+        {
+            SourceData = App.Connection.Service.ToList();
+
+            lvServices.ItemsSource = SourceData;
+
+            EditDataCount();
+
+            adminModeBtn.Visibility = App.IsAdminMode ? Visibility.Collapsed : Visibility.Visible;
+            btnAddNewService.Visibility = App.IsAdminMode ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void btnEditServiceClick(object sender, RoutedEventArgs e)
+        {
+            var tag = (int)((Button)sender).Tag;  
+            var service = App.Connection.Service.FirstOrDefault(x => x.ID == tag);
+            NavigationService.Navigate(new ServicePage(service));
+        }
+
+        private void btnDeleteServiceClick(object sender, RoutedEventArgs e)
+        {
+            var tag = (int)((Button)sender).Tag;
+            var service = App.Connection.Service.FirstOrDefault(x => x.ID == tag);
+
+            var clientServices = App.Connection.ClientService.ToList().Where(x => x.ServiceID == tag);
+
+            if(clientServices.Any())
+            {
+                MessageBox.Show("Какие-то записи ещё оформлены на эту услугу!");
+                return;
+            }
+
+            MessageBox.Show("Услуга успешно удалена! (тест)", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnAddNewServiceClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ServicePage(null));
         }
     }
 }
