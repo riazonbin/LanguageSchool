@@ -25,7 +25,11 @@ namespace LanguageSchool
         {
             InitializeComponent();
 
-            MainFrame.Navigate(new ServicesPage());
+            MainFrame.Navigate(new MainPage());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

@@ -198,5 +198,15 @@ namespace LanguageSchool.Pages
         {
             NavigationService.Navigate(new ServicePage(null));
         }
+
+        private void lvServicesSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(!App.IsAdminMode)
+            {
+                return;
+            }
+
+            NavigationService.Navigate(new AddClientRecordPage(lvServices.SelectedItem as Service));
+        }
     }
 }

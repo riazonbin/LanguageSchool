@@ -20,12 +20,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Background="#FFE7FABF"></StackPanel>
-
-        <StackPanel Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="Школа языков Леарн" FontSize="24" Margin="0 0 10 0"></TextBlock>
-            <Image Source="\Images\school_logo.png" Width="45"  VerticalAlignment="Top"></Image>
-        </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom">
 
@@ -55,7 +49,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch">
+        <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch" SelectionChanged="lvServicesSelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="{Binding Path=ServiceBackgroundColor}">
@@ -92,7 +86,10 @@
         </ListView>
 
         <StackPanel Grid.Column="1" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnAddNewService" Content="Добавить новую услугу" Click="btnAddNewServiceClick"/>
+                <Button x:Name="btnShowClientRecords" Content="Просмотреть записи" Click="btnAddNewServiceClick"/>
+            </StackPanel>
             <TextBlock x:Name="tbDataCount"></TextBlock>
         </StackPanel>
     </Grid>

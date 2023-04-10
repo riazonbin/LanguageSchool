@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageSchool"
         mc:Ignorable="d"
-        Title="Языковая школа" Height="600" Width="1050" MinHeight="600" MinWidth="1050">
+        Title="Языковая школа" Height="600" Width="1250" MinHeight="600" MinWidth="1250">
     <Grid>
-        <Frame x:Name="MainFrame"></Frame>
+        <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Grid.Column="1" Grid.Row="1"></Frame>
     </Grid>
 </Window>

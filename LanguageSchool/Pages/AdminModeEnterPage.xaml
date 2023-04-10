@@ -20,22 +20,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Background="#FFE7FABF"></StackPanel>
-
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="300">
-            <TextBlock Text="Школа языков Леарн" FontSize="24" Margin="0 0 10 0"></TextBlock>
-            <Image Source="\Images\school_logo.png" Width="45"  VerticalAlignment="Top"></Image>
-        </StackPanel>
-
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="Введите код:"></TextBlock>
             <TextBox x:Name="tbAdminPassword" Height="30"></TextBox>
             <Button Margin="0 10 0 0" x:Name="enterAdminModeBtn" Content="Войти" Click="enterAdminModeBtnClick"></Button>
-        </StackPanel>
-
-        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
-            <Button x:Name="btnGoBack" Content="Назад" Click="btnGoBackClick"></Button>
         </StackPanel>
     </Grid>
 </Page>
