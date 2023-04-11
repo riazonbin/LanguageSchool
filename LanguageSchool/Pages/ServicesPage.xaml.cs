@@ -208,5 +208,10 @@ namespace LanguageSchool.Pages
 
             NavigationService.Navigate(new AddClientRecordPage(lvServices.SelectedItem as Service));
         }
+
+        private void btnShowClientRecordsClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ClientsRecordsPage());
+        }
     }
 }

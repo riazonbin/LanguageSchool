@@ -23,13 +23,16 @@
         <StackPanel Grid.Row="1" Grid.Column="0">
             <TextBlock Text="Название"></TextBlock>
             <TextBlock Text="Длительность (в секундах)"></TextBlock>
-            <TextBlock Text="Клиент"></TextBlock>
+            <TextBlock Margin="4 20 0 0" Text="Клиент"></TextBlock>
+            <TextBlock Margin="4 25 0 0" Text="Дата"></TextBlock>
+            <TextBlock Text="Время"></TextBlock>
+            <TextBlock Text="Комментарий"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBox x:Name="tbName" Text="{Binding Title}"></TextBox>
             <TextBox x:Name="tbDuration" Text="{Binding DurationInSeconds}"></TextBox>
-            <ComboBox x:Name="cbClients">
+            <ComboBox x:Name="cbClients" Margin="4">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -40,6 +43,9 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <DatePicker Margin="4" x:Name="startDatePicker"></DatePicker>
+            <TextBox Name="tbTime"></TextBox>
+            <TextBox x:Name="tbComment"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">

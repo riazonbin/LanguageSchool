@@ -88,7 +88,7 @@
         <StackPanel Grid.Column="1" Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnAddNewService" Content="Добавить новую услугу" Click="btnAddNewServiceClick"/>
-                <Button x:Name="btnShowClientRecords" Content="Просмотреть записи" Click="btnAddNewServiceClick"/>
+            <Button x:Name="btnShowClientRecords" Content="Просмотреть записи" Click="btnShowClientRecordsClick"/>
             </StackPanel>
             <TextBlock x:Name="tbDataCount"></TextBlock>
         </StackPanel>

@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ClientsRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +104,7 @@
     <Compile Include="Components\DocumentByService.cs">
       <DependentUpon>LanguageSchoolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\ExtensionClasses\ClientService.cs" />
     <Compile Include="Components\ExtensionClasses\Service.cs" />
     <Compile Include="Components\Gender.cs">
       <DependentUpon>LanguageSchoolModel.tt</DependentUpon>
@@ -148,6 +153,9 @@
     </Compile>
     <Compile Include="Pages\AdminModeEnterPage.xaml.cs">
       <DependentUpon>AdminModeEnterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientsRecordsPage.xaml.cs">
+      <DependentUpon>ClientsRecordsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

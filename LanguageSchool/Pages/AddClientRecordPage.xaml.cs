@@ -43,12 +43,30 @@ namespace LanguageSchool.Pages
                 return;
             }
 
+            DateTime parsedTime;
+            DateTime.TryParse(tbTime.Text, out  parsedTime);
+
+            if(parsedTime == DateTime.MinValue)
+            {
+                return;
+            }
+
+            var hours = parsedTime.Hour;
+            var minutes = parsedTime.Minute;
+
             ClientService clientService = new ClientService()
             {
                 Client = cbClients.SelectedItem as Client,
                 Service = _service,
-
+                Comment = tbComment.Text,
+                StartTime = (startDatePicker.SelectedDate).Value.AddHours(hours).AddMinutes(minutes)
             };
+
+            App.Connection.ClientService.Add(clientService);
+            App.Connection.SaveChanges();
+
+            MessageBox.Show("Запись успешно добавлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            NavigationService.GoBack();
         }
     }
 }
