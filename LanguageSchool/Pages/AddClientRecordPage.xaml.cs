@@ -46,7 +46,7 @@ namespace LanguageSchool.Pages
             DateTime parsedTime;
             DateTime.TryParse(tbTime.Text, out  parsedTime);
 
-            if(parsedTime == DateTime.MinValue)
+            if(parsedTime == DateTime.MinValue || startDatePicker.SelectedDate == null)
             {
                 return;
             }

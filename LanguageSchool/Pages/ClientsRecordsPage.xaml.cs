@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace LanguageSchool.Pages
 {
@@ -20,12 +21,27 @@ namespace LanguageSchool.Pages
     /// </summary>
     public partial class ClientsRecordsPage : Page
     {
+        DispatcherTimer _dispatcherTimer;
         public ClientsRecordsPage()
         {
             InitializeComponent();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            lvRecords.ItemsSource = App.Connection.ClientService.ToList().Where(x => x.StartTime >= DateTime.Now && x.StartTime < DateTime.Now.AddDays(2));
+            StartTimer();
+        }
+
+        private void StartTimer()
+        {
+            _dispatcherTimer = new DispatcherTimer();
+            _dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            _dispatcherTimer.Interval = new TimeSpan(0, 0, 30);
+            _dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             lvRecords.ItemsSource = App.Connection.ClientService.ToList().Where(x => x.StartTime >= DateTime.Now && x.StartTime < DateTime.Now.AddDays(2));
         }

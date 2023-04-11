@@ -20,53 +20,51 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <ListView x:Name="lvRecords" d:ItemsSource="{d:SampleData ItemCount=5}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Услуга:"></TextBlock>
-                                <TextBlock Text="{Binding Path=Service.Title}"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="ФИО клиента:"></TextBlock>
-                                <TextBlock>
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} {1} {2}">
-                                            <Binding Path="Client.FirstName"></Binding>
-                                            <Binding Path="Client.LastName"></Binding>
-                                            <Binding Path="Client.Patronymic"></Binding>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Номер телефона:"></TextBlock>
-                                <TextBlock Text="{Binding Path=Client.Phone}"></TextBlock>
-                            </StackPanel>
-
-
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Почта:"></TextBlock>
-                                <TextBlock Text="{Binding Path=Client.Email}"></TextBlock>
-                            </StackPanel>
-
-
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Дата записи:"></TextBlock>
-                                <TextBlock Text="{Binding Path=StartTime}"></TextBlock>
-                            </StackPanel>
-                            
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Осталось до записи:"></TextBlock>
-                                <TextBlock Text="{Binding Path=TimeBeforeRecordStart}"></TextBlock>
-                            </StackPanel>
+        <ListView  Grid.Row="1" Grid.Column="1" x:Name="lvRecords" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Услуга:"></TextBlock>
+                            <TextBlock Text="{Binding Path=Service.Title}"></TextBlock>
                         </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ФИО клиента:"></TextBlock>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="Client.FirstName"></Binding>
+                                        <Binding Path="Client.LastName"></Binding>
+                                        <Binding Path="Client.Patronymic"></Binding>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Номер телефона:"></TextBlock>
+                            <TextBlock Text="{Binding Path=Client.Phone}"></TextBlock>
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Почта:"></TextBlock>
+                            <TextBlock Text="{Binding Path=Client.Email}"></TextBlock>
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Дата записи:"></TextBlock>
+                            <TextBlock Text="{Binding Path=StartTime}"></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Осталось до записи:"></TextBlock>
+                            <TextBlock Text="{Binding Path=TimeBeforeRecordStart}"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
