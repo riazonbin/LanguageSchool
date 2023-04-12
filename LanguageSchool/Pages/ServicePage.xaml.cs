@@ -1,7 +1,9 @@
 ﻿using LanguageSchool.Components;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,6 +78,17 @@ namespace LanguageSchool.Pages
             MessageBox.Show("Услуга успешно сохранена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
 
             NavigationService.GoBack();
+        }
+
+        private void btnAddImageClick(object sender, RoutedEventArgs e)
+        {
+            var window = new OpenFileDialog();
+
+            if(window.ShowDialog() != true)
+            {
+                MessageBox.Show("Изображение не выбрано");
+                return;
+            }
         }
     }
 }

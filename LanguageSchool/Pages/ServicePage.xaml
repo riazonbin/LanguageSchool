@@ -11,12 +11,12 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -27,6 +27,7 @@
             <TextBlock Text="Длительность (в секундах)"></TextBlock>
             <TextBlock Text="Описание"></TextBlock>
             <TextBlock Text="Скидка (в %)"></TextBlock>
+            <TextBlock Text="Изображение"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
@@ -36,6 +37,8 @@
             <TextBox x:Name="tbDuration" Text="{Binding DurationInSeconds}"></TextBox>
             <TextBox x:Name="tbDescription" Text="{Binding Description}"></TextBox>
             <TextBox x:Name="tbDiscount" Text="{Binding Discount}"></TextBox>
+            <Button x:Name="btnAddImage" Content="Добавить изображение" Click="btnAddImageClick"></Button>
+            <Image Name="imageService" Source="{Binding ImagePath}"></Image>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">
