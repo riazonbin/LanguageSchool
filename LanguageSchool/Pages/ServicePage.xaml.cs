@@ -54,8 +54,13 @@ namespace LanguageSchool.Pages
 
         private void btnSaveClick(object sender, RoutedEventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(_service.Title) || _service.Cost <= 0 || _service.DurationInSeconds <= 0)
+            {
+                MessageBox.Show("Введите все поля корректно!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-            if(!isEdit)
+            if (!isEdit)
             {
                 var res = App.Connection.Service.FirstOrDefault(x => x.Title== _service.Title);
                 if(res != null)
