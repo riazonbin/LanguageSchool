@@ -21,7 +21,6 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
             <Button Content="Назад" x:Name="btnBack" Click="btnBack_Click"/>
-            <Button Content="Вперед" x:Name="btnForward" Click="btnForward_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Background="#FFE7FABF"></StackPanel>

@@ -34,10 +34,5 @@ namespace LanguageSchool.Pages
 
             NavigationService.GoBack();
         }
-
-        private void btnGoBackClick(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
     }
 }

@@ -33,13 +33,5 @@ namespace LanguageSchool.Pages
                 NavigationService.GoBack();
             }
         }
-
-        private void btnForward_Click(object sender, RoutedEventArgs e)
-        {
-            if(NavigationService.CanGoForward)
-            {
-                NavigationService.GoForward();
-            }
-        }
     }
 }

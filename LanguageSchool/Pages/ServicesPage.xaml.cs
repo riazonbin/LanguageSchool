@@ -44,11 +44,6 @@ namespace LanguageSchool.Pages
                 return;
             }
 
-            if (tbSearchName.Text == "00000")
-            {
-                App.IsAdminMode = true;
-            }
-
             lvServices.ItemsSource = SourceData.Where(x => x.Title.ToLower().Contains(tbSearchName.Text.ToLower())).ToList();
 
             EditDataCount();

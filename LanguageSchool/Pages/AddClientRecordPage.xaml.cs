@@ -40,6 +40,7 @@ namespace LanguageSchool.Pages
         {
             if(cbClients.SelectedItem == null)
             {
+                MessageBox.Show(messageBoxText: "Укажите клиента!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -48,6 +49,7 @@ namespace LanguageSchool.Pages
 
             if(parsedTime == DateTime.MinValue || startDatePicker.SelectedDate == null)
             {
+                MessageBox.Show(messageBoxText: "Данные даты или времени не корректны!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -65,7 +67,7 @@ namespace LanguageSchool.Pages
             App.Connection.ClientService.Add(clientService);
             App.Connection.SaveChanges();
 
-            MessageBox.Show("Запись успешно добавлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(messageBoxText: "Запись успешно добавлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
             NavigationService.GoBack();
         }
     }
