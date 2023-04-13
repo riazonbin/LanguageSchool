@@ -210,16 +210,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Components\LanguageSchoolModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>LanguageSchoolModel.Context.cs</LastGenOutput>
-      <DependentUpon>LanguageSchoolModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Components\LanguageSchoolModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LanguageSchoolModel.edmx</DependentUpon>
-      <LastGenOutput>LanguageSchoolModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Images\school_logo.ico" />
     <Resource Include="Images\school_logo.png" />
     <Resource Include="Услуги школы\for company.jpg" />
@@ -243,6 +233,17 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Components\LanguageSchoolModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LanguageSchoolModel.Context.cs</LastGenOutput>
+      <DependentUpon>LanguageSchoolModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Components\LanguageSchoolModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LanguageSchoolModel.edmx</DependentUpon>
+      <LastGenOutput>LanguageSchoolModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,7 +38,7 @@
             <TextBox x:Name="tbDescription" Text="{Binding Description}"></TextBox>
             <TextBox x:Name="tbDiscount" Text="{Binding Discount}"></TextBox>
             <Button x:Name="btnAddImage" Content="Добавить изображение" Click="btnAddImageClick"></Button>
-            <Image Name="imageService" Source="{Binding ImagePath}"></Image>
+            <Image Name="imageService" Source="{Binding PhotoBytes}"></Image>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1">

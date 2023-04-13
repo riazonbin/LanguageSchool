@@ -89,6 +89,9 @@ namespace LanguageSchool.Pages
                 MessageBox.Show("Изображение не выбрано");
                 return;
             }
+
+            var byteArray = File.ReadAllBytes(window.FileName);
+            _service.PhotoBytes = byteArray;
         }
     }
 }

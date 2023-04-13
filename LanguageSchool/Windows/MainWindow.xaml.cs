@@ -1,6 +1,7 @@
 ﻿using LanguageSchool.Pages;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,6 @@ namespace LanguageSchool
             InitializeComponent();
 
             MainFrame.Navigate(new MainPage());
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
         }
     }
 }
