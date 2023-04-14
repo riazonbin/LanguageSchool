@@ -130,16 +130,14 @@ namespace LanguageSchool.Pages
 
         private void DeleteAdditionalImageBtnClick(object sender, RoutedEventArgs e)
         {
-            var tag = (int)((Button)sender).Tag;
-            var image = _service.ServicePhoto.FirstOrDefault(x => x.ID == tag);
-            _service.ServicePhoto.Remove(image);
+            var tag = (ServicePhoto)((Button)sender).Tag;
+            _service.ServicePhoto.Remove(tag);
             lvAdditionalImages.ItemsSource = null;
             lvAdditionalImages.ItemsSource = _service.ServicePhoto.ToList();
 
-            if (isEdit)
+            if (tag.ID != 0)
             {
-                var deleteImage = App.Connection.ServicePhoto.ToList().FirstOrDefault(x => x.ID == image?.ID);
-                if (deleteImage != null) App.Connection.ServicePhoto.Remove(deleteImage);
+                App.Connection.ServicePhoto.Remove(tag);
                 App.Connection.SaveChanges();
             }
         }

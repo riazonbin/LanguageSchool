@@ -5,17 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LanguageSchool.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="1250"
+      d:DesignHeight="750" d:DesignWidth="1250"
       Title="ServicePage" Background="White" Loaded="PageLoaded">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -55,9 +55,9 @@
                 <StackPanel Grid.Row="2" Grid.Column="0">
                     <TextBlock Text="Главное изображение"></TextBlock>
                     <Button x:Name="btnAddImage" Content="Добавить осн. изображение" Click="BtnAddMainImageClick"></Button>
-                    <Image Name="imageService" Source="{Binding PhotoBytes}" Width="150" Height="150" Margin="0 10 0 0"></Image>
+                    <Image Name="imageService" Source="{Binding PhotoBytes}" Width="275" Height="275" Margin="0 10 0 0"></Image>
                 </StackPanel>
-
+                
                 <Grid Grid.Row="2" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
@@ -70,12 +70,12 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="1">
-                    <ListView MaxHeight="150" x:Name="lvAdditionalImages"  HorizontalContentAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListView MaxHeight="300" MaxWidth="500" x:Name="lvAdditionalImages"  HorizontalContentAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Width="150" Height="150" Source="{Binding PhotoBytes}"></Image>
-                                    <Button x:Name="DeleteAdditionalImageBtn" Margin="10 0 0 0" Content="Удалить" Tag="{Binding ID}" VerticalAlignment="Center" Click="DeleteAdditionalImageBtnClick"></Button>
+                                    <Button x:Name="DeleteAdditionalImageBtn" Margin="10 0 0 0" Content="Удалить" Tag="{Binding}" VerticalAlignment="Center" Click="DeleteAdditionalImageBtnClick"></Button>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
