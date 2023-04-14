@@ -32,7 +32,7 @@ namespace LanguageSchool.Pages
             InitializeComponent();
         }
 
-        private void tbSearchNameTextChanged(object sender, TextChangedEventArgs e)
+        private void TbSearchNameTextChanged(object sender, TextChangedEventArgs e)
         {
             SearchServicesByName();
         }
@@ -66,7 +66,7 @@ namespace LanguageSchool.Pages
             
         }
 
-        private void cbSortPriceSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CbSortPriceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SortPrice();
         }
@@ -139,7 +139,7 @@ namespace LanguageSchool.Pages
             UpdateData();
         }
 
-        private void cbFilterDiscountSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CbFilterDiscountSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FiltrateDiscount();
         }
@@ -149,7 +149,7 @@ namespace LanguageSchool.Pages
             tbDataCount.Text = $"{lvServices.Items.Count} из {App.Connection.Service.ToList().Count}";
         }
 
-        private void adminModeBtnClick(object sender, RoutedEventArgs e)
+        private void AdminModeBtnClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AdminModeEnterPage());
         }
@@ -166,14 +166,14 @@ namespace LanguageSchool.Pages
             btnAddNewService.Visibility = App.IsAdminMode ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void btnEditServiceClick(object sender, RoutedEventArgs e)
+        private void BtnEditServiceClick(object sender, RoutedEventArgs e)
         {
             var tag = (int)((Button)sender).Tag;  
             var service = App.Connection.Service.FirstOrDefault(x => x.ID == tag);
             NavigationService.Navigate(new ServicePage(service));
         }
 
-        private void btnDeleteServiceClick(object sender, RoutedEventArgs e)
+        private void BtnDeleteServiceClick(object sender, RoutedEventArgs e)
         {
             var tag = (int)((Button)sender).Tag;
             var service = App.Connection.Service.FirstOrDefault(x => x.ID == tag);
@@ -186,15 +186,15 @@ namespace LanguageSchool.Pages
                 return;
             }
 
-            MessageBox.Show("Услуга успешно удалена! (тест)", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Услуга успешно удалена! (это тест - она не удалится)", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void btnAddNewServiceClick(object sender, RoutedEventArgs e)
+        private void BtnAddNewServiceClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ServicePage(null));
         }
 
-        private void lvServicesSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LvServicesSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(!App.IsAdminMode)
             {
@@ -204,7 +204,7 @@ namespace LanguageSchool.Pages
             NavigationService.Navigate(new AddClientRecordPage(lvServices.SelectedItem as Service));
         }
 
-        private void btnShowClientRecordsClick(object sender, RoutedEventArgs e)
+        private void BtnShowClientRecordsClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ClientsRecordsPage());
         }

@@ -36,12 +36,12 @@ namespace LanguageSchool.Pages
         private void StartTimer()
         {
             _dispatcherTimer = new DispatcherTimer();
-            _dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            _dispatcherTimer.Tick += new EventHandler(DispatcherTimerTick);
             _dispatcherTimer.Interval = new TimeSpan(0, 0, 30);
             _dispatcherTimer.Start();
         }
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        private void DispatcherTimerTick(object sender, EventArgs e)
         {
             lvRecords.ItemsSource = App.Connection.ClientService.ToList().Where(x => x.StartTime >= DateTime.Now && x.StartTime < DateTime.Now.AddDays(2));
         }

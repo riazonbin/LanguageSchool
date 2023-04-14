@@ -25,20 +25,20 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Поиск:"></TextBlock>
-                <TextBox Margin="10 0 0 0" x:Name="tbSearchName" Width="200" TextChanged="tbSearchNameTextChanged"></TextBox>
-                <Button x:Name="adminModeBtn" Margin="30 0 0 0" Content="Войти в админ режим" Click="adminModeBtnClick"/>
+                <TextBox Margin="10 0 0 0" x:Name="tbSearchName" Width="200" TextChanged="TbSearchNameTextChanged"></TextBox>
+                <Button x:Name="adminModeBtn" Margin="30 0 0 0" Content="Войти в админ режим" Click="AdminModeBtnClick"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Сортировка"></TextBlock>
-                <ComboBox Margin="10 0 0 0" x:Name="cbSortPrice" SelectionChanged="cbSortPriceSelectionChanged" SelectedIndex="0">
+                <ComboBox Margin="10 0 0 0" x:Name="cbSortPrice" SelectionChanged="CbSortPriceSelectionChanged" SelectedIndex="0">
                     <ComboBoxItem Content="Нет сортировки"></ComboBoxItem>
                     <ComboBoxItem Content="По убыванию"></ComboBoxItem>
                     <ComboBoxItem Content="По возрастанию"></ComboBoxItem>
                 </ComboBox>
 
                 <TextBlock Margin="10 0 0 0" Text="Фильтрация по скидке"></TextBlock>
-                <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" SelectedIndex="0" SelectionChanged="cbFilterDiscountSelectionChanged">
+                <ComboBox Margin="10 0 0 0" x:Name="cbFilterDiscount" SelectedIndex="0" SelectionChanged="CbFilterDiscountSelectionChanged">
                     <ComboBoxItem Content="Без фильтрации по скидке"></ComboBoxItem>
                     <ComboBoxItem Content="от 0 до 5%"></ComboBoxItem>
                     <ComboBoxItem Content="от 5 до 15%"></ComboBoxItem>
@@ -49,7 +49,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch" SelectionChanged="lvServicesSelectionChanged">
+        <ListView x:Name="lvServices" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Stretch" SelectionChanged="LvServicesSelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="{Binding Path=ServiceBackgroundColor}">
@@ -77,8 +77,8 @@
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 8">
-                            <Button x:Name="btnEditService" Visibility="{Binding AdminVisibility}" Tag="{Binding ID}" Content="Редактировать" Margin="0 0 5 0" Click="btnEditServiceClick"/>
-                            <Button x:Name="btnDeleteService" Visibility="{Binding AdminVisibility}" Tag="{Binding ID}" Content="Удалить" Margin="5 0 0 0" Click="btnDeleteServiceClick"/>
+                            <Button x:Name="btnEditService" Visibility="{Binding AdminVisibility}" Tag="{Binding ID}" Content="Редактировать" Margin="0 0 5 0" Click="BtnEditServiceClick"/>
+                            <Button x:Name="btnDeleteService" Visibility="{Binding AdminVisibility}" Tag="{Binding ID}" Content="Удалить" Margin="5 0 0 0" Click="BtnDeleteServiceClick"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -87,8 +87,8 @@
 
         <StackPanel Grid.Column="1" Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnAddNewService" Content="Добавить новую услугу" Click="btnAddNewServiceClick"/>
-            <Button x:Name="btnShowClientRecords" Content="Просмотреть записи" Click="btnShowClientRecordsClick"/>
+            <Button x:Name="btnAddNewService" Content="Добавить новую услугу" Click="BtnAddNewServiceClick"/>
+            <Button x:Name="btnShowClientRecords" Content="Просмотреть записи" Click="BtnShowClientRecordsClick"/>
             </StackPanel>
             <TextBlock x:Name="tbDataCount"></TextBlock>
         </StackPanel>

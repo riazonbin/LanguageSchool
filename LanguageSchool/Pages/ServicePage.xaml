@@ -5,44 +5,90 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LanguageSchool.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ServicePage" Background="White">
+      d:DesignHeight="650" d:DesignWidth="1250"
+      Title="ServicePage" Background="White" Loaded="PageLoaded">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <TextBlock x:Name="tblID" Text="ID"></TextBlock>
-            <TextBlock Text="Название"></TextBlock>
-            <TextBlock Text="Стоимость"></TextBlock>
-            <TextBlock Text="Длительность (в секундах)"></TextBlock>
-            <TextBlock Text="Описание"></TextBlock>
-            <TextBlock Text="Скидка (в %)"></TextBlock>
-            <TextBlock Text="Изображение"></TextBlock>
-        </StackPanel>
-
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="tbID" Text="{Binding ID}" IsReadOnly="True"></TextBox>
-            <TextBox x:Name="tbTitle" Text="{Binding Title}"></TextBox>
-            <TextBox x:Name="tbCost" Text="{Binding Cost}"></TextBox>
-            <TextBox x:Name="tbDuration" Text="{Binding DurationInSeconds}"></TextBox>
-            <TextBox x:Name="tbDescription" Text="{Binding Description}"></TextBox>
-            <TextBox x:Name="tbDiscount" Text="{Binding Discount}"></TextBox>
-            <Button x:Name="btnAddImage" Content="Добавить изображение" Click="btnAddImageClick"></Button>
-            <Image Name="imageService" Source="{Binding PhotoBytes}"></Image>
-        </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="10*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <Button x:Name="btnSave" Content="Сохранить" Click="btnSaveClick"></Button>
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <TextBlock x:Name="tblID" Text="ID"></TextBlock>
+                    <TextBlock Text="Название"></TextBlock>
+                    <TextBlock Text="Стоимость"></TextBlock>
+                    <TextBlock Text="Длительность (в секундах)"></TextBlock>
+                    <TextBlock Text="Описание"></TextBlock>
+                    <TextBlock Text="Скидка (в %)"></TextBlock>
+                    <TextBlock Text="Изображение"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBox x:Name="tbID" Text="{Binding ID}" IsReadOnly="True"></TextBox>
+                    <TextBox x:Name="tbTitle" Text="{Binding Title}"></TextBox>
+                    <TextBox x:Name="tbCost" Text="{Binding Cost}"></TextBox>
+                    <TextBox x:Name="tbDuration" Text="{Binding DurationInSeconds}"></TextBox>
+                    <TextBox x:Name="tbDescription" Text="{Binding Description}"></TextBox>
+                    <TextBox x:Name="tbDiscount" Text="{Binding Discount}"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="Главное изображение"></TextBlock>
+                    <Button x:Name="btnAddImage" Content="Добавить осн. изображение" Click="BtnAddMainImageClick"></Button>
+                    <Image Name="imageService" Source="{Binding PhotoBytes}" Width="150" Height="150" Margin="0 10 0 0"></Image>
+                </StackPanel>
+
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="8*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                    <TextBlock Text="Дополнительные изображения"></TextBlock>
+                    <Button x:Name="btnAddAdditionalImage" Content="Добавить доп. изображение" Click="BtnAddAdditionalImageClick"></Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1">
+                    <ListView MaxHeight="150" x:Name="lvAdditionalImages"  HorizontalContentAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="150" Height="150" Source="{Binding PhotoBytes}"></Image>
+                                    <Button x:Name="DeleteAdditionalImageBtn" Margin="10 0 0 0" Content="Удалить" Tag="{Binding ID}" VerticalAlignment="Center" Click="DeleteAdditionalImageBtnClick"></Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                        
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal"  HorizontalAlignment="Center">
+                    <Button x:Name="btnSave" Content="Сохранить" Click="BtnSaveClick"></Button>
+                </StackPanel>
+
+            </Grid>
         </StackPanel>
 
     </Grid>

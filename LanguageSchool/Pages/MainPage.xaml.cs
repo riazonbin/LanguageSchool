@@ -26,7 +26,7 @@ namespace LanguageSchool.Pages
             MainPageFrame.Navigate(new ServicesPage());
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private void BtnBackClick(object sender, RoutedEventArgs e)
         {
             if(NavigationService.CanGoBack)
             {

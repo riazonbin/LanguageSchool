@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
@@ -40,19 +41,14 @@ namespace LanguageSchool.Pages
             {
                 _service = new Service();
             }
-
-            tbID.Visibility = isEdit? Visibility.Visible : Visibility.Collapsed;
-            tblID.Visibility = isEdit? Visibility.Visible : Visibility.Collapsed;
-
-            this.DataContext = _service;
         }
 
-        private void btnGoBackClick(object sender, RoutedEventArgs e)
+        private void BtnGoBackClick(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
-        private void btnSaveClick(object sender, RoutedEventArgs e)
+        private void BtnSaveClick(object sender, RoutedEventArgs e)
         {
             if(string.IsNullOrWhiteSpace(_service.Title) || _service.Cost <= 0 || _service.DurationInSeconds <= 0)
             {
@@ -85,7 +81,7 @@ namespace LanguageSchool.Pages
             NavigationService.GoBack();
         }
 
-        private void btnAddImageClick(object sender, RoutedEventArgs e)
+        private void BtnAddMainImageClick(object sender, RoutedEventArgs e)
         {
             var window = new OpenFileDialog();
 
@@ -97,6 +93,55 @@ namespace LanguageSchool.Pages
 
             var byteArray = File.ReadAllBytes(window.FileName);
             _service.PhotoBytes = byteArray;
+
+            BindingOperations.GetBindingExpressionBase(imageService, Image.SourceProperty).UpdateTarget();
+
+        }
+
+        private void BtnAddAdditionalImageClick(object sender, RoutedEventArgs e)
+        {
+            var window = new OpenFileDialog();
+
+            if (window.ShowDialog() != true)
+            {
+                MessageBox.Show("Изображение не выбрано");
+                return;
+            }
+
+            var byteArray = File.ReadAllBytes(window.FileName);
+            _service.ServicePhoto.Add(new ServicePhoto()
+            {
+                ServiceID = _service.ID,
+                PhotoBytes = byteArray
+            });
+
+            lvAdditionalImages.ItemsSource = _service.ServicePhoto.ToList();
+        }
+
+        private void PageLoaded(object sender, RoutedEventArgs e)
+        {
+
+            tbID.Visibility = isEdit ? Visibility.Visible : Visibility.Collapsed;
+            tblID.Visibility = isEdit ? Visibility.Visible : Visibility.Collapsed;
+
+            this.DataContext = _service;
+            lvAdditionalImages.ItemsSource = _service.ServicePhoto.ToList();
+        }
+
+        private void DeleteAdditionalImageBtnClick(object sender, RoutedEventArgs e)
+        {
+            var tag = (int)((Button)sender).Tag;
+            var image = _service.ServicePhoto.FirstOrDefault(x => x.ID == tag);
+            _service.ServicePhoto.Remove(image);
+            lvAdditionalImages.ItemsSource = null;
+            lvAdditionalImages.ItemsSource = _service.ServicePhoto.ToList();
+
+            if (isEdit)
+            {
+                var deleteImage = App.Connection.ServicePhoto.ToList().FirstOrDefault(x => x.ID == image?.ID);
+                if (deleteImage != null) App.Connection.ServicePhoto.Remove(deleteImage);
+                App.Connection.SaveChanges();
+            }
         }
     }
 }

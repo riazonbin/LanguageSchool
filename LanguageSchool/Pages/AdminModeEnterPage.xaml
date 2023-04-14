@@ -23,7 +23,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="Введите код:"></TextBlock>
             <TextBox x:Name="tbAdminPassword" Height="30"></TextBox>
-            <Button Margin="0 10 0 0" x:Name="enterAdminModeBtn" Content="Войти" Click="enterAdminModeBtnClick"></Button>
+            <Button Margin="0 10 0 0" x:Name="enterAdminModeBtn" Content="Войти" Click="EnterAdminModeBtnClick"></Button>
         </StackPanel>
     </Grid>
 </Page>

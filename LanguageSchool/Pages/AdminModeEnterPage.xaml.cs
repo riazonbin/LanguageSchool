@@ -25,7 +25,7 @@ namespace LanguageSchool.Pages
             InitializeComponent();
         }
 
-        private void enterAdminModeBtnClick(object sender, RoutedEventArgs e)
+        private void EnterAdminModeBtnClick(object sender, RoutedEventArgs e)
         {
             if(tbAdminPassword.Text == "0000")
             {

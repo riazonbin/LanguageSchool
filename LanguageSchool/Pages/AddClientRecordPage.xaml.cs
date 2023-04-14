@@ -36,7 +36,7 @@ namespace LanguageSchool.Pages
             cbClients.ItemsSource = App.Connection.Client.ToList();
         }
 
-        private void btnAddRecord_Click(object sender, RoutedEventArgs e)
+        private void BtnAddRecordClick(object sender, RoutedEventArgs e)
         {
             if(cbClients.SelectedItem == null)
             {
