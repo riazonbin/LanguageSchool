@@ -141,5 +141,13 @@ namespace LanguageSchool.Pages
                 App.Connection.SaveChanges();
             }
         }
+
+        private void PageUnloaded(object sender, RoutedEventArgs e)
+        {
+            if(isEdit)
+            {
+                App.Connection.Entry(_service).Reload();
+            }
+        }
     }
 }
