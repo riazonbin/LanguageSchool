@@ -55,12 +55,19 @@
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Дата записи:"></TextBlock>
-                            <TextBlock Text="{Binding Path=StartTime}"></TextBlock>
+                            <TextBlock Text="{Binding Path=StartTime, StringFormat='dd.MM.yyyy hh:mm'}"></TextBlock>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Осталось до записи:"></TextBlock>
-                            <TextBlock Text="{Binding Path=TimeBeforeRecordStart}"></TextBlock>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}Осталось: {0} часов и {1} минут">
+                                        <Binding Path="HoursBeforeRecordStart"></Binding> 
+                                        <Binding Path="MinutesBeforeRecordStart"></Binding> 
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock Text="{Binding Path=TimeBeforeRecordStart, StringFormat={} {}}"></TextBlock>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

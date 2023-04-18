@@ -1,6 +1,7 @@
 ﻿using LanguageSchool.Components;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,7 +59,7 @@ namespace LanguageSchool.Pages
 
            SourceData = App.Connection.Service.ToList()
                 .Where(
-                x => _filterQuery(x))
+                x => _filterQuery(x) && x.IsMarkedForDeletion != true)
                 .OrderBy(x => _sortQuery(x))
                 .ToList();
 
@@ -156,7 +157,7 @@ namespace LanguageSchool.Pages
 
         private void ServicesPageLoaded(object sender, RoutedEventArgs e)
         {
-            SourceData = App.Connection.Service.ToList();
+            UpdateData();
 
             lvServices.ItemsSource = SourceData;
 
@@ -186,7 +187,14 @@ namespace LanguageSchool.Pages
                 return;
             }
 
-            MessageBox.Show("Услуга успешно удалена! (это тест - она не удалится)", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            service.IsMarkedForDeletion= true;
+            App.Connection.Service.AddOrUpdate(service);
+            App.Connection.SaveChanges();
+
+            UpdateData();
+
+            MessageBox.Show("Услуга успешно удалена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
 
         private void BtnAddNewServiceClick(object sender, RoutedEventArgs e)
